@@ -178,3 +178,10 @@ h1 em { color:#72d7ff; font-style:normal; }
   .floatingBadge { width:82px; height:82px; font-size:9px; }
   .trustBar span { width:45%; }
 }
+
+/* Accessible bilingual language control */
+.languageSwitcher { display:flex; align-items:center; gap:6px; margin-left:auto; margin-right:18px; color:rgba(255,255,255,.55); font-size:12px; font-weight:700; }
+.languageSwitcher button { color:rgba(255,255,255,.7); background:transparent; border:1px solid transparent; padding:7px 8px; border-radius:6px; font:inherit; cursor:pointer; }
+.languageSwitcher button.active { color:#fff; background:rgba(255,255,255,.16); border-color:rgba(255,255,255,.35); }
+.languageSwitcher button:hover, .languageSwitcher button:focus-visible { color:#fff; outline:2px solid #a4ec37; outline-offset:2px; }
+@media(max-width:850px) { .languageSwitcher { margin-left:auto; margin-right:10px; } }

@@ -3,35 +3,82 @@ import { createRoot } from 'react-dom/client'
 import './styles.css'
 import logo from './assets/sumatu-logo.jpg'
 
-const services = [
-  {
-    number: '01',
-    title: 'Hospitality Training',
-    text: 'Practical, standards-driven training that builds confident teams and consistently exceptional guest experiences.',
-    tags: ['Service Excellence', 'Leadership', 'Operations'],
+const translations = {
+  en: {
+    navServices:'Services', navAbout:'About', navApproach:'Our Approach', navContact:"Let's Talk",
+    heroEyebrow:'HOSPITALITY TRAINING · CONSULTING · STAFFING', heroTitle:'Elevating hospitality.', heroAccent:'Empowering people.',
+    heroText:'We help hospitality businesses build stronger teams, sharper operations and memorable guest experiences through practical expertise and people-first solutions.',
+    startConversation:'Start a conversation', exploreServices:'Explore our services', excellence:'Hospitality excellence, delivered.', people:'PEOPLE', first:'FIRST',
+    trust:['Built around people','Operationally focused','Guest experience obsessed','Results driven'],
+    aboutLabel:'01 / WHO WE ARE', aboutTitle:'Hospitality is more than a service.', aboutAccent:"It's an experience.",
+    aboutP1:'Sumatu International brings together hospitality training, consulting and staffing to help businesses perform at their best.',
+    aboutP2:'From developing people to improving day-to-day operations, we focus on practical solutions that make a visible difference — for your team, your guests and your business.',
+    servicesLabel:'02 / WHAT WE DO', servicesTitle:'Three disciplines.', servicesAccent:'One hospitality partner.',
+    servicesIntro:'{t.servicesIntro}',
+    services:[
+      {title:'Hospitality Training',text:'Practical, standards-driven training that builds confident teams and consistently exceptional guest experiences.',tags:['Service Excellence','Leadership','Operations']},
+      {title:'Consulting',text:'Hands-on operational guidance to strengthen performance, improve standards and create sustainable hospitality businesses.',tags:['Operations','Standards','Performance']},
+      {title:'Staffing',text:'Connect your operation with capable hospitality professionals who fit your culture, standards and service goals.',tags:['Recruitment','Placement','Talent']}
+    ],
+    standard:'THE SUMATU STANDARD', standardText:['Better people.','Better operations.','Better stays.'],
+    approachLabel:'03 / OUR APPROACH', approachTitle:'Practical thinking.', approachAccent:'Human impact.',
+    approachText:'Hospitality works when people have the tools, standards and confidence to do their best work. Our approach is collaborative, practical and designed around the realities of your operation.',
+    stats:['People-first approach','Practical expertise','Service-led thinking','Long-term partnerships'],
+    differenceLabel:'04 / THE DIFFERENCE', differenceTitle:"We don't just improve service.", differenceAccent:'We build the people behind it.', workWith:'Work with Sumatu',
+    contactLabel:"05 / LET'S CONNECT", contactTitle:'Ready to raise', contactAccent:'the standard?',
+    contactText:"{t.contactText}",
+    email:'EMAIL', phone:'PHONE', name:'Name', namePlaceholder:'Your name', workEmail:'Work email', help:'How can we help?',
+    messagePlaceholder:'Tell us about your training, consulting or staffing needs...', send:'Send enquiry ↗', sent:'Message ready to send ✓',
+    success:'{t.success}',
+    footerLine:'Hospitality Training · Consulting · Staffing', footerApproach:'Approach', footerContact:'Contact', rights:'All rights reserved.',
+    menu:'Toggle navigation', language:'Website language'
   },
-  {
-    number: '02',
-    title: 'Consulting',
-    text: 'Hands-on operational guidance to strengthen performance, improve standards and create sustainable hospitality businesses.',
-    tags: ['Operations', 'Standards', 'Performance'],
-  },
-  {
-    number: '03',
-    title: 'Staffing',
-    text: 'Connect your operation with capable hospitality professionals who fit your culture, standards and service goals.',
-    tags: ['Recruitment', 'Placement', 'Talent'],
-  },
-]
+  de: {
+    navServices:'Leistungen', navAbout:'Über uns', navApproach:'Unser Ansatz', navContact:'Kontakt aufnehmen',
+    heroEyebrow:'HOTELLERIE-TRAINING · BERATUNG · PERSONALVERMITTLUNG', heroTitle:'Gastfreundschaft auf höchstem Niveau.', heroAccent:'Menschen stärken.',
+    heroText:'Wir unterstützen Unternehmen im Gastgewerbe dabei, stärkere Teams, effizientere Abläufe und unvergessliche Gästeerlebnisse zu schaffen – mit praxisnaher Expertise und Lösungen, bei denen Menschen im Mittelpunkt stehen.',
+    startConversation:'Gespräch beginnen', exploreServices:'Leistungen entdecken', excellence:'Exzellenz in der Gastfreundschaft.', people:'MENSCHEN', first:'ZUERST',
+    trust:['Menschen im Mittelpunkt','Fokus auf Betriebsabläufe','Begeisternde Gästeerlebnisse','Ergebnisorientiert'],
+    aboutLabel:'01 / ÜBER UNS', aboutTitle:'Gastfreundschaft ist mehr als eine Dienstleistung.', aboutAccent:'Sie ist ein Erlebnis.',
+    aboutP1:'Sumatu International vereint Schulungen, Beratung und Personalvermittlung für das Gastgewerbe, damit Unternehmen ihr volles Potenzial entfalten können.',
+    aboutP2:'Von der Mitarbeiterentwicklung bis zur Optimierung täglicher Abläufe setzen wir auf praxisnahe Lösungen, die für Ihr Team, Ihre Gäste und Ihr Unternehmen spürbare Verbesserungen bringen.',
+    servicesLabel:'02 / UNSERE LEISTUNGEN', servicesTitle:'Drei Fachbereiche.', servicesAccent:'Ein Partner für Gastfreundschaft.',
+    servicesIntro:'Von der Personalauswahl bis zu Ihren Servicestandards stärken wir jeden Abschnitt der Gästereise.',
+    services:[
+      {title:'Schulungen im Gastgewerbe',text:'Praxisorientierte Schulungen mit klaren Standards, die Teams stärken und dauerhaft herausragende Gästeerlebnisse ermöglichen.',tags:['Servicequalität','Führung','Betriebsabläufe']},
+      {title:'Beratung',text:'Praxisnahe betriebliche Beratung, um Leistung und Standards zu verbessern und nachhaltige Unternehmen im Gastgewerbe aufzubauen.',tags:['Betriebsabläufe','Standards','Leistung']},
+      {title:'Personalvermittlung',text:'Wir bringen Sie mit qualifizierten Fachkräften zusammen, die zu Ihrer Unternehmenskultur, Ihren Standards und Ihren Servicezielen passen.',tags:['Rekrutierung','Vermittlung','Talente']}
+    ],
+    standard:'DER SUMATU-STANDARD', standardText:['Stärkere Teams.','Bessere Abläufe.','Schönere Aufenthalte.'],
+    approachLabel:'03 / UNSER ANSATZ', approachTitle:'Praxisnah denken.', approachAccent:'Menschen bewegen.',
+    approachText:'Gastfreundschaft gelingt, wenn Menschen die richtigen Werkzeuge, Standards und das Vertrauen haben, ihr Bestes zu geben. Unser Ansatz ist partnerschaftlich, praxisorientiert und auf die Anforderungen Ihres Betriebs abgestimmt.',
+    stats:['Menschenorientierter Ansatz','Praxisnahe Expertise','Serviceorientiertes Denken','Langfristige Partnerschaften'],
+    differenceLabel:'04 / UNSER UNTERSCHIED', differenceTitle:'Wir verbessern nicht nur den Service.', differenceAccent:'Wir stärken die Menschen dahinter.', workWith:'Mit Sumatu zusammenarbeiten',
+    contactLabel:'05 / KONTAKT', contactTitle:'Bereit für höhere', contactAccent:'Standards?',
+    contactText:'Erzählen Sie uns von Ihrem Unternehmen und Ihren Zielen. Wir kümmern uns um die nächsten Schritte.',
+    email:'E-MAIL', phone:'TELEFON', name:'Name', namePlaceholder:'Ihr Name', workEmail:'Geschäftliche E-Mail', help:'Wie können wir helfen?',
+    messagePlaceholder:'Erzählen Sie uns von Ihrem Bedarf an Schulungen, Beratung oder Personal...', send:'Anfrage senden ↗', sent:'Nachricht vorbereitet ✓',
+    success:'Vielen Dank – Ihre Anfrage wurde erfasst. Verbinden Sie dieses Formular mit Ihrem E-Mail- oder CRM-System, um Nachrichten zu erhalten.',
+    footerLine:'Schulungen · Beratung · Personalvermittlung', footerApproach:'Ansatz', footerContact:'Kontakt', rights:'Alle Rechte vorbehalten.',
+    menu:'Navigation umschalten', language:'Sprache der Website'
+  }
+}
 
-const stats = [
-  ['01', 'People-first approach'],
-  ['02', 'Practical expertise'],
-  ['03', 'Service-led thinking'],
-  ['04', 'Long-term partnerships'],
-]
+function getInitialLanguage() {
+  try { return localStorage.getItem('sumatu-language') === 'de' ? 'de' : 'en' } catch { return 'en' }
+}
 
 function App() {
+  const [language, setLanguage] = useState(getInitialLanguage)
+  const t = translations[language]
+  const changeLanguage = (next) => {
+    setLanguage(next)
+    setMenuOpen(false)
+    try { localStorage.setItem('sumatu-language', next) } catch { /* Storage may be disabled */ }
+    document.documentElement.lang = next
+    document.title = next === 'de' ? 'Sumatu International | Exzellenz im Gastgewerbe' : 'Sumatu International | Hospitality Excellence'
+  }
+  React.useEffect(() => { document.documentElement.lang = language; document.title = language === 'de' ? 'Sumatu International | Exzellenz im Gastgewerbe' : 'Sumatu International | Hospitality Excellence' }, [language])
   const [menuOpen, setMenuOpen] = useState(false)
   const [submitted, setSubmitted] = useState(false)
 
@@ -50,9 +97,14 @@ function App() {
           <img src={logo} alt="Sumatu International" />
         </a>
 
+        <div className="languageSwitcher" role="group" aria-label={t.language}>
+          <button type="button" className={language === 'en' ? 'active' : ''} aria-pressed={language === 'en'} onClick={() => changeLanguage('en')}>EN</button>
+          <span aria-hidden="true">/</span>
+          <button type="button" className={language === 'de' ? 'active' : ''} aria-pressed={language === 'de'} onClick={() => changeLanguage('de')}>DE</button>
+        </div>
         <button
           className="menuButton"
-          aria-label="Toggle navigation"
+          aria-label={t.menu}
           aria-expanded={menuOpen}
           onClick={() => setMenuOpen(!menuOpen)}
         >
@@ -60,10 +112,10 @@ function App() {
         </button>
 
         <nav className={menuOpen ? 'nav open' : 'nav'}>
-          <a href="#services" onClick={closeMenu}>Services</a>
-          <a href="#about" onClick={closeMenu}>About</a>
-          <a href="#approach" onClick={closeMenu}>Our Approach</a>
-          <a href="#contact" className="navCta" onClick={closeMenu}>Let's Talk <span>↗</span></a>
+          <a href="#services" onClick={closeMenu}>{t.navServices}</a>
+          <a href="#about" onClick={closeMenu}>{t.navAbout}</a>
+          <a href="#approach" onClick={closeMenu}>{t.navApproach}</a>
+          <a href="#contact" className="navCta" onClick={closeMenu}>{t.navContact} <span>↗</span></a>
         </nav>
       </header>
 
@@ -71,15 +123,14 @@ function App() {
         <section className="hero">
           <div className="heroGlow"></div>
           <div className="heroCopy">
-            <p className="eyebrow">HOSPITALITY TRAINING · CONSULTING · STAFFING</p>
-            <h1>Elevating hospitality.<br /><em>Empowering people.</em></h1>
+            <p className="eyebrow">{t.heroEyebrow}</p>
+            <h1>{t.heroTitle}<br /><em>{t.heroAccent}</em></h1>
             <p className="heroText">
-              We help hospitality businesses build stronger teams, sharper operations
-              and memorable guest experiences through practical expertise and people-first solutions.
+              {t.heroText}
             </p>
             <div className="heroActions">
-              <a className="button primary" href="#contact">Start a conversation <span>↗</span></a>
-              <a className="textLink" href="#services">Explore our services <span>↓</span></a>
+              <a className="button primary" href="#contact">{t.startConversation} <span>↗</span></a>
+              <a className="textLink" href="#services">{t.exploreServices} <span>↓</span></a>
             </div>
           </div>
 
@@ -88,31 +139,26 @@ function App() {
             <div className="visualCard">
               <span>SUMATU</span>
               <strong>International</strong>
-              <small>Hospitality excellence, delivered.</small>
+              <small>{t.excellence}</small>
             </div>
-            <div className="floatingBadge">PEOPLE<br /><b>FIRST</b></div>
+            <div className="floatingBadge">{t.people}<br /><b>{t.first}</b></div>
           </div>
         </section>
 
         <section className="trustBar">
-          <span>Built around people</span>
-          <span>Operationally focused</span>
-          <span>Guest experience obsessed</span>
-          <span>Results driven</span>
+          {t.trust.map((item) => <span key={item}>{item}</span>)}
         </section>
 
         <section className="intro section" id="about">
-          <div className="sectionLabel">01 / WHO WE ARE</div>
+          <div className="sectionLabel">{t.aboutLabel}</div>
           <div className="introContent">
-            <h2>Hospitality is more than a service. <span>It's an experience.</span></h2>
+            <h2>{t.aboutTitle} <span>{t.aboutAccent}</span></h2>
             <div>
               <p>
-                Sumatu International brings together hospitality training, consulting and staffing
-                to help businesses perform at their best.
+                {t.aboutP1}
               </p>
               <p>
-                From developing people to improving day-to-day operations, we focus on practical
-                solutions that make a visible difference — for your team, your guests and your business.
+                {t.aboutP2}
               </p>
             </div>
           </div>
@@ -121,17 +167,17 @@ function App() {
         <section className="services section" id="services">
           <div className="sectionHeading">
             <div>
-              <div className="sectionLabel">02 / WHAT WE DO</div>
-              <h2>Three disciplines.<br /><span>One hospitality partner.</span></h2>
+              <div className="sectionLabel">{t.servicesLabel}</div>
+              <h2>{t.servicesTitle}<br /><span>{t.servicesAccent}</span></h2>
             </div>
-            <p>From the people you hire to the standards you deliver, we help strengthen every part of the guest journey.</p>
+            <p>{t.servicesIntro}</p>
           </div>
 
           <div className="serviceGrid">
-            {services.map((service) => (
-              <article className="serviceCard" key={service.number}>
+            {t.services.map((service, index) => (
+              <article className="serviceCard" key={index}>
                 <div className="serviceTop">
-                  <span>{service.number}</span>
+                  <span>{String(index + 1).padStart(2, "0")}</span>
                   <span className="arrow">↗</span>
                 </div>
                 <h3>{service.title}</h3>
@@ -147,21 +193,19 @@ function App() {
         <section className="approach section" id="approach">
           <div className="approachImage">
             <div className="imageOverlay">
-              <span>THE SUMATU STANDARD</span>
-              <strong>Better people.<br />Better operations.<br />Better stays.</strong>
+              <span>{t.standard}</span>
+              <strong>{t.standardText[0]}<br />{t.standardText[1]}<br />{t.standardText[2]}</strong>
             </div>
           </div>
           <div className="approachCopy">
-            <div className="sectionLabel">03 / OUR APPROACH</div>
-            <h2>Practical thinking.<br /><span>Human impact.</span></h2>
+            <div className="sectionLabel">{t.approachLabel}</div>
+            <h2>{t.approachTitle}<br /><span>{t.approachAccent}</span></h2>
             <p>
-              Hospitality works when people have the tools, standards and confidence to do their
-              best work. Our approach is collaborative, practical and designed around the realities
-              of your operation.
+              {t.approachText}
             </p>
             <div className="stats">
-              {stats.map(([num, text]) => (
-                <div className="stat" key={num}><b>{num}</b><span>{text}</span></div>
+              {t.stats.map((text, index) => (
+                <div className="stat" key={index}><b>{String(index + 1).padStart(2, "0")}</b><span>{text}</span></div>
               ))}
             </div>
           </div>
@@ -169,29 +213,29 @@ function App() {
 
         <section className="statement">
           <div className="statementInner">
-            <div className="sectionLabel">04 / THE DIFFERENCE</div>
-            <h2>We don't just improve service.<br /><span>We build the people behind it.</span></h2>
-            <a className="button light" href="#contact">Work with Sumatu <span>↗</span></a>
+            <div className="sectionLabel">{t.differenceLabel}</div>
+            <h2>{t.differenceTitle}<br /><span>{t.differenceAccent}</span></h2>
+            <a className="button light" href="#contact">{t.workWith} <span>↗</span></a>
           </div>
         </section>
 
         <section className="contact section" id="contact">
           <div className="contactIntro">
-            <div className="sectionLabel">05 / LET'S CONNECT</div>
-            <h2>Ready to raise<br /><span>the standard?</span></h2>
-            <p>Tell us a little about your business and what you want to achieve. We'll take it from there.</p>
+            <div className="sectionLabel">{t.contactLabel}</div>
+            <h2>{t.contactTitle}<br /><span>{t.contactAccent}</span></h2>
+            <p>{t.contactText}</p>
             <div className="contactDetails">
-              <div><small>EMAIL</small><a href="mailto:hello@sumatuinternational.com">hello@sumatuinternational.com</a></div>
-              <div><small>PHONE</small><a href="tel:+10000000000">+1 000 000 0000</a></div>
+              <div><small>{t.email}</small><a href="mailto:hello@sumatuinternational.com">hello@sumatuinternational.com</a></div>
+              <div><small>{t.phone}</small><a href="tel:+10000000000">+1 000 000 0000</a></div>
             </div>
           </div>
 
           <form className="contactForm" onSubmit={handleSubmit}>
-            <label>Name<input name="name" required placeholder="Your name" /></label>
-            <label>Work email<input type="email" name="email" required placeholder="you@company.com" /></label>
-            <label>How can we help?<textarea name="message" required placeholder="Tell us about your training, consulting or staffing needs..." rows="5"></textarea></label>
-            <button className="button primary" type="submit">{submitted ? 'Message ready to send ✓' : 'Send enquiry ↗'}</button>
-            {submitted && <p className="success">Thanks — your enquiry has been captured. Connect this form to your email/CRM endpoint to receive submissions.</p>}
+            <label>{t.name}<input name="name" required placeholder={t.namePlaceholder} /></label>
+            <label>{t.workEmail}<input type="email" name="email" required placeholder="you@company.com" /></label>
+            <label>{t.help}<textarea name="message" required placeholder={t.messagePlaceholder} rows="5"></textarea></label>
+            <button className="button primary" type="submit">{submitted ? t.sent : t.send}</button>
+            {submitted && <p className="success">{t.success}</p>}
           </form>
         </section>
       </main>
@@ -199,12 +243,12 @@ function App() {
       <footer className="footer">
         <div className="footerBrand">
           <img src={logo} alt="Sumatu International" />
-          <p>Hospitality Training · Consulting · Staffing</p>
+          <p>{t.footerLine}</p>
         </div>
         <div className="footerLinks">
-          <a href="#services">Services</a><a href="#about">About</a><a href="#approach">Approach</a><a href="#contact">Contact</a>
+          <a href="#services">{t.navServices}</a><a href="#about">{t.navAbout}</a><a href="#approach">{t.footerApproach}</a><a href="#contact">{t.footerContact}</a>
         </div>
-        <div className="copyright">© {new Date().getFullYear()} Sumatu International. All rights reserved.</div>
+        <div className="copyright">© {new Date().getFullYear()} Sumatu International. {t.rights}</div>
       </footer>
     </div>
   )
